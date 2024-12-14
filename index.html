@@ -105,10 +105,6 @@
             border-radius: 50%;
         }
 
-        .ornament:nth-child(1) { top: -30px; left: 30px; }
-        .ornament:nth-child(2) { top: -80px; left: -40px; }
-        .ornament:nth-child(3) { top: -100px; left: 10px; }
-
         /* Falling Snowflakes */
         .snowflake {
             position: absolute;
@@ -117,96 +113,9 @@
             height: 8px;
             background: white;
             border-radius: 50%;
-            animation: fall 5s linear infinite;
+            animation: fall linear infinite;
             opacity: 0.8;
         }
 
         @keyframes fall {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100vh); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            #greeting { font-size: 2em; }
-            .layer {
-                border-left: 50px solid transparent;
-                border-right: 50px solid transparent;
-                border-bottom: 80px solid green;
-            }
-            .layer:nth-child(2) {
-                border-left: 40px solid transparent;
-                border-right: 40px solid transparent;
-                border-bottom: 70px solid green;
-            }
-            .layer:nth-child(3) {
-                border-left: 30px solid transparent;
-                border-right: 30px solid transparent;
-                border-bottom: 60px solid green;
-            }
-            .star {
-                width: 20px;
-                height: 20px;
-                top: -140px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #greeting { font-size: 1.5em; }
-            .layer {
-                border-left: 30px solid transparent;
-                border-right: 30px solid transparent;
-                border-bottom: 60px solid green;
-            }
-            .layer:nth-child(2) {
-                border-left: 25px solid transparent;
-                border-right: 25px solid transparent;
-                border-bottom: 50px solid green;
-            }
-            .layer:nth-child(3) {
-                border-left: 20px solid transparent;
-                border-right: 20px solid transparent;
-                border-bottom: 40px solid green;
-            }
-            .star {
-                width: 15px;
-                height: 15px;
-                top: -100px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Greeting Text -->
-    <div id="greeting">Merry Christmas</div>
-
-    <!-- Christmas Tree -->
-    <div id="tree">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="star"></div>
-        <div class="ornament"></div>
-        <div class="ornament"></div>
-        <div class="ornament"></div>
-        <div class="trunk"></div>
-    </div>
-
-    <script>
-        // Generate Snowflakes
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            snowflake.style.animationDuration = Math.random() * 3 + 3 + 's';
-            document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        }
-
-        setInterval(createSnowflake, 200);
-    </script>
-</body>
-</html>
+            0% { transform: translateY(
