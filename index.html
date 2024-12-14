@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Christmas Tree</title>
     <style>
-        /* General styling */
+        /* General Styling */
         body {
             margin: 0;
             height: 100vh;
@@ -24,7 +24,8 @@
             font-weight: bold;
             color: #fff;
             text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            z-index: 10;
             animation: pulse 2s infinite;
         }
 
@@ -37,47 +38,47 @@
             }
         }
 
-        /* Tree container */
+        /* Tree Container */
         #tree {
             position: relative;
-            width: 0;
-            height: 0;
             animation: glow 2s infinite alternate;
         }
 
-        /* Tree layers */
+        /* Tree Layers */
         .layer {
             position: absolute;
             width: 0;
             height: 0;
-            border-left: 15vw solid transparent;
-            border-right: 15vw solid transparent;
-            border-bottom: 20vw solid green;
-            transform-origin: center bottom;
-            animation: sway 3s infinite alternate ease-in-out;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid green;
         }
 
         .layer:nth-child(1) {
-            transform: scale(1.5);
+            transform: translateY(0);
         }
 
         .layer:nth-child(2) {
-            top: -13vw;
-            transform: scale(1.2);
+            top: -80px;
+            border-bottom: 90px solid green;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
         }
 
         .layer:nth-child(3) {
-            top: -20vw;
-            transform: scale(1);
+            top: -140px;
+            border-bottom: 80px solid green;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
         }
 
         /* Star */
         .star {
             position: absolute;
-            top: -22vw;
-            left: -2vw;
-            width: 4vw;
-            height: 4vw;
+            top: -180px;
+            left: -15px;
+            width: 30px;
+            height: 30px;
             background: yellow;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             animation: twinkle 2s infinite alternate;
@@ -86,34 +87,34 @@
         /* Ornaments */
         .ornament {
             position: absolute;
-            width: 3vw;
-            height: 3vw;
+            width: 10px;
+            height: 10px;
             background: red;
             border-radius: 50%;
             animation: twinkle 2s infinite alternate;
         }
 
         .ornament:nth-child(1) {
-            top: -8vw;
-            left: -12vw;
+            top: -60px;
+            left: -40px;
         }
 
         .ornament:nth-child(2) {
-            top: -10vw;
-            left: 10vw;
+            top: -100px;
+            left: 30px;
         }
 
         .ornament:nth-child(3) {
-            top: -4vw;
-            left: -2vw;
+            top: -30px;
+            left: 0;
         }
 
-        /* Falling snowflakes */
+        /* Falling Snowflakes */
         .snowflake {
             position: absolute;
             top: -10px;
-            width: 2vw;
-            height: 2vw;
+            width: 8px;
+            height: 8px;
             background: white;
             border-radius: 50%;
             opacity: 0.8;
@@ -127,15 +128,6 @@
             }
             100% {
                 filter: brightness(1.5);
-            }
-        }
-
-        @keyframes sway {
-            0% {
-                transform: rotate(-2deg) scale(1);
-            }
-            100% {
-                transform: rotate(2deg) scale(1);
             }
         }
 
@@ -163,18 +155,25 @@
                 font-size: 2em;
             }
             .layer {
-                border-left: 12vw solid transparent;
-                border-right: 12vw solid transparent;
-                border-bottom: 16vw solid green;
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 80px solid green;
+            }
+            .layer:nth-child(2) {
+                border-bottom: 70px solid green;
+                border-left: 40px solid transparent;
+                border-right: 40px solid transparent;
+            }
+            .layer:nth-child(3) {
+                border-bottom: 60px solid green;
+                border-left: 30px solid transparent;
+                border-right: 30px solid transparent;
             }
             .star {
-                width: 3vw;
-                height: 3vw;
-                top: -18vw;
-            }
-            .ornament {
-                width: 2.5vw;
-                height: 2.5vw;
+                top: -140px;
+                left: -12px;
+                width: 24px;
+                height: 24px;
             }
         }
 
@@ -183,18 +182,25 @@
                 font-size: 1.5em;
             }
             .layer {
-                border-left: 10vw solid transparent;
-                border-right: 10vw solid transparent;
-                border-bottom: 14vw solid green;
+                border-left: 40px solid transparent;
+                border-right: 40px solid transparent;
+                border-bottom: 70px solid green;
+            }
+            .layer:nth-child(2) {
+                border-bottom: 60px solid green;
+                border-left: 30px solid transparent;
+                border-right: 30px solid transparent;
+            }
+            .layer:nth-child(3) {
+                border-bottom: 50px solid green;
+                border-left: 25px solid transparent;
+                border-right: 25px solid transparent;
             }
             .star {
-                width: 2.5vw;
-                height: 2.5vw;
-                top: -16vw;
-            }
-            .ornament {
-                width: 2vw;
-                height: 2vw;
+                top: -120px;
+                left: -10px;
+                width: 20px;
+                height: 20px;
             }
         }
     </style>
@@ -215,7 +221,7 @@
     </div>
 
     <script>
-        // Generate falling snowflakes
+        // Generate Falling Snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
