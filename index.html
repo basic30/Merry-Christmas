@@ -39,6 +39,7 @@
         #tree {
             position: relative;
             z-index: 5; /* Ensure tree is below text but above background */
+            margin-top: 20px; /* Add some space above the tree */
         }
 
         /* Tree Layers */
@@ -49,6 +50,8 @@
             border-left: 70px solid transparent;
             border-right: 70px solid transparent;
             border-bottom: 100px solid green;
+            left: 50%; /* Center the tree */
+            transform: translateX(-50%); /* Center the tree */
         }
 
         .layer:nth-child(1) {
@@ -110,7 +113,8 @@
             z-index: 8; /* Ensure ornaments are above tree layers */
         }
 
-         Falling Snow.snowflake {
+        /* Falling Snowflakes */
+        .snowflake {
             position: absolute;
             background: white;
             border-radius: 50%;
@@ -146,6 +150,7 @@
             snowflake.style.width = `${size}px`;
             snowflake.style.height = `${size}px`;
             snowflake.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            snowflake.style.top = `${Math.random() * -100}px`; // Start above the viewport
             snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random fall duration
             document.body.appendChild(snowflake);
         }
