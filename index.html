@@ -173,15 +173,15 @@
     <script>
         // Create snowflakes
         for (let i = 0; i < 100; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            const size = Math.random() * 10 + 5; // Random size between 5 and 15
-            snowflake.style.width = '${size}px';
-            snowflake.style.height = ${size}px;
-            snowflake.style.left = ${Math.random() * 100}vw; // Random horizontal position
-            snowflake.style.top = ${Math.random() * -100}px; // Start above the viewport
-            snowflake.style.animationDuration = ${Math.random() * 3 + 2}s; // Random fall duration
-            document.body.appendChild(snowflake);
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    const size = Math.random() * 10 + 5; // Random size between 5 and 15
+    snowflake.style.width = size + 'px';
+    snowflake.style.height = size + 'px';
+    snowflake.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+    snowflake.style.top = Math.random() * -100 + 'px'; // Start above the viewport
+    snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Random fall duration
+    document.body.appendChild(snowflake);
         }
     </script>
 </body>
