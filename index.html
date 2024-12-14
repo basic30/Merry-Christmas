@@ -170,15 +170,21 @@
         <div class="trunk"></div>
         <div class="star"></div>
     </div>
-    <audio id="christmas-music" loop autoplay muted>
-    <source src="https://www.dropbox.com/scl/fi/ihbj3cdnvf662r15qei2s/Jingle-Bells-Kevin-MacLeod.mp3?rlkey=3if07w1vsq1fg3ykexdq9ub32&st=3ls5jenx&raw=1" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+    <audio id="christmas-music" loop>
+        <source src="https://www.dropbox.com/scl/fi/ihbj3cdnvf662r15qei2s/Jingle-Bells-Kevin-MacLeod.mp3?rlkey=3if07w1vsq1fg3ykexdq9ub32&st=3ls5jenx&raw=1" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-<script>
-    // Unmute the audio after the page loads
-    document.getElementById('christmas-music').muted = false;
-</script>
+    <script>
+        // Add an event listener to the entire document
+        document.addEventListener('click', function () {
+            const music = document.getElementById('christmas-music');
+            if (music.paused) {
+                music.play(); // Play the music
+                console.log("Music is playing.");
+            }
+        }, { once: true }); // The event listener will only fire once
+    </script>
     <script>
         // Create snowflakes
         for (let i = 0; i < 100; i++) {
