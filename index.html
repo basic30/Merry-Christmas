@@ -54,7 +54,7 @@
             border-bottom: 100px solid green;
             left: 50%; /* Center the tree */
             transform: translateX(-50%); /* Center the tree */
-            box-shadow: 0 0 20px green, 0 0 30px green; /* Glowing effect */
+            box-shadow: 0 0 10px green, 0 0 20px green; /* Glowing effect */
         }
 
         .layer:nth-child(1) {
@@ -66,6 +66,7 @@
             border-left: 60px solid transparent;
             border-right: 60px solid transparent;
             border-bottom: 90px solid green;
+            box-shadow: 0 0 10px green, 0 0 20px green; /* Glowing effect */
         }
 
         .layer:nth-child(3) {
@@ -73,6 +74,7 @@
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
             border-bottom: 80px solid green;
+            box-shadow: 0 0 10px green, 0 0 20px green; /* Glowing effect */
         }
 
         /* Tree Trunk */
@@ -85,7 +87,7 @@
             background: brown;
             transform: translateX(-50%);
             z-index: 6; /* Ensure trunk is above tree layers */
-            box-shadow: 0 0 20px brown, 0 0 30px brown; /* Glowing effect */
+            box-shadow: 0 0 10px brown, 0 0 20px brown; /* Glowing effect */
         }
 
         /* Star */
@@ -103,7 +105,7 @@
         }
 
         @keyframes twinkle {
-            0% { transform: scale(1); opacity: 0.8; }
+            0% { transform: scale(1); opacity: 0 .8; }
             100% { transform: scale(1.2); opacity: 1; }
         }
 
