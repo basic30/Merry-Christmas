@@ -54,6 +54,7 @@
             border-bottom: 100px solid green;
             left: 50%; /* Center the tree */
             transform: translateX(-50%); /* Center the tree */
+            box-shadow: 0 0 20px green, 0 0 30px green; /* Glowing effect */
         }
 
         .layer:nth-child(1) {
@@ -84,6 +85,7 @@
             background: brown;
             transform: translateX(-50%);
             z-index: 6; /* Ensure trunk is above tree layers */
+            box-shadow: 0 0 20px brown, 0 0 30px brown; /* Glowing effect */
         }
 
         /* Star */
@@ -105,43 +107,19 @@
             100% { transform: scale(1.2); opacity: 1; }
         }
 
-        /* Glowing Lights */
-        .light {
+        /* Falling Snowflakes */
+        .snowflake {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            background: white;
             border-radius: 50%;
-            background: yellow;
-            box-shadow: 0 0 10px yellow, 0 0 20px yellow;
-            animation: glow 1.5s infinite alternate; /* Add glow effect */
+            opacity: 0.8;
+            animation: fall 5s linear infinite;
+            z-index: 1; /* Ensure snowflakes are below other elements */
         }
 
-        @keyframes glow {
-            0% { transform: scale(1); opacity : 0.8; }
-            100% { transform: scale(1.5); opacity: 1; }
-        }
-
-        /* String of Lights */
-        .light-string {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Prevent interaction */
-        }
-
-        .light-string::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            width: 2px;
-            height: 300px; /* Length of the string */
-            background: transparent;
-            transform: translateX(-50%);
-        }
-
-        .light-string .light {
-            animation: glow 1.5s infinite alternate;
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
         }
     </style>
 </head>
@@ -153,14 +131,6 @@
         <div class="layer"></div>
         <div class="trunk"></div>
         <div class="star"></div>
-        <div class="light-string">
-            <div class="light" style="top: 30px; left: 20%;"></div>
-            <div class="light" style="top: 60px; left: 40%;"></div>
-            <div class="light" style="top: 90px; left: 60%;"></div>
-            <div class="light" style="top: 120px; left: 30%;"></div>
-            <div class="light" style="top: 150px; left: 50%;"></div>
-            <div class="light" style="top: 180px; left: 70%;"></div>
-        </div>
     </div>
     <script>
         // Create snowflakes
