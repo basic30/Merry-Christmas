@@ -14,8 +14,30 @@
             align-items: center;
             background: linear-gradient(to bottom, #000428, #004e92);
             overflow: hidden;
+            flex-direction: column;
         }
 
+        /* Merry Christmas Text */
+        #greeting {
+            font-family: 'Arial', sans-serif;
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                color: red;
+            }
+            50% {
+                color: gold;
+            }
+        }
+
+        /* Tree container */
         #tree {
             position: relative;
             width: 0;
@@ -52,7 +74,7 @@
         /* Star */
         .star {
             position: absolute;
-            top: -180px;
+            top: -200px;
             left: -15px;
             width: 30px;
             height: 30px;
@@ -137,6 +159,10 @@
     </style>
 </head>
 <body>
+    <!-- Merry Christmas Text -->
+    <div id="greeting">Merry Christmas</div>
+
+    <!-- Tree -->
     <div id="tree">
         <div class="layer"></div>
         <div class="layer"></div>
