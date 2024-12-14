@@ -3,45 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Christmas Tree</title>
+    <title>Christmas Tree</title>
     <style>
-        /* General Styling */
+        /* Base Styling */
         body {
             margin: 0;
-            height: 100vh;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #000428, #004e92);
+            height: 100vh;
+            background: linear-gradient(to bottom, #00203f, #004e92);
             overflow: hidden;
+            font-family: 'Arial', sans-serif;
         }
 
         /* Merry Christmas Text */
         #greeting {
-            font-family: 'Arial', sans-serif;
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: bold;
             color: #fff;
-            text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 30px green;
-            margin-bottom: 10px;
-            z-index: 10;
-            animation: pulse 2s infinite;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ffff00;
+            margin-bottom: 20px;
+            animation: glowText 2s infinite alternate;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                color: red;
-            }
-            50% {
-                color: gold;
-            }
+        @keyframes glowText {
+            0% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ffff00; }
+            100% { text-shadow: 0 0 15px #00ff00, 0 0 25px #00ff00, 0 0 35px #ff00ff; }
         }
 
         /* Tree Container */
         #tree {
             position: relative;
-            animation: glow 2s infinite alternate;
         }
 
         /* Tree Layers */
@@ -49,39 +44,44 @@
             position: absolute;
             width: 0;
             height: 0;
-            border-left: 60px solid transparent;
-            border-right: 60px solid transparent;
-            border-bottom: 100px solid green;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 80px solid green;
         }
 
         .layer:nth-child(1) {
-            transform: translateY(0);
+            top: 0;
         }
 
         .layer:nth-child(2) {
-            top: -80px;
-            border-bottom: 90px solid green;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
+            top: -60px;
+            border-left: 45px solid transparent;
+            border-right: 45px solid transparent;
+            border-bottom: 70px solid green;
         }
 
         .layer:nth-child(3) {
-            top: -140px;
-            border-bottom: 80px solid green;
+            top: -120px;
             border-left: 40px solid transparent;
             border-right: 40px solid transparent;
+            border-bottom: 60px solid green;
         }
 
         /* Star */
         .star {
             position: absolute;
-            top: -180px;
-            left: -15px;
-            width: 30px;
-            height: 30px;
+            top: -140px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
             background: yellow;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; }
         }
 
         /* Ornaments */
@@ -91,23 +91,11 @@
             height: 10px;
             background: red;
             border-radius: 50%;
-            animation: twinkle 2s infinite alternate;
         }
 
-        .ornament:nth-child(1) {
-            top: -60px;
-            left: -40px;
-        }
-
-        .ornament:nth-child(2) {
-            top: -100px;
-            left: 30px;
-        }
-
-        .ornament:nth-child(3) {
-            top: -30px;
-            left: 0;
-        }
+        .ornament:nth-child(1) { top: -20px; left: -30px; }
+        .ornament:nth-child(2) { top: -50px; left: 20px; }
+        .ornament:nth-child(3) { top: -90px; left: -15px; }
 
         /* Falling Snowflakes */
         .snowflake {
@@ -117,96 +105,59 @@
             height: 8px;
             background: white;
             border-radius: 50%;
-            opacity: 0.8;
             animation: fall 5s linear infinite;
-        }
-
-        /* Keyframes */
-        @keyframes glow {
-            0% {
-                filter: brightness(0.8);
-            }
-            100% {
-                filter: brightness(1.5);
-            }
-        }
-
-        @keyframes twinkle {
-            0% {
-                opacity: 0.6;
-            }
-            100% {
-                opacity: 1;
-            }
+            opacity: 0.8;
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(100vh);
-            }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
         }
 
-        /* Responsive Adjustments */
+        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
-            #greeting {
-                font-size: 2em;
-            }
+            #greeting { font-size: 2.5em; }
             .layer {
-                border-left: 50px solid transparent;
-                border-right: 50px solid transparent;
-                border-bottom: 80px solid green;
-            }
-            .layer:nth-child(2) {
-                border-bottom: 70px solid green;
                 border-left: 40px solid transparent;
                 border-right: 40px solid transparent;
+                border-bottom: 70px solid green;
+            }
+            .layer:nth-child(2) {
+                border-left: 35px solid transparent;
+                border-right: 35px solid transparent;
+                border-bottom: 60px solid green;
             }
             .layer:nth-child(3) {
-                border-bottom: 60px solid green;
                 border-left: 30px solid transparent;
                 border-right: 30px solid transparent;
+                border-bottom: 50px solid green;
             }
-            .star {
-                top: -140px;
-                left: -12px;
-                width: 24px;
-                height: 24px;
-            }
+            .star { top: -120px; left: -8px; width: 18px; height: 18px; }
         }
 
         @media (max-width: 480px) {
-            #greeting {
-                font-size: 1.5em;
-            }
+            #greeting { font-size: 2em; }
             .layer {
-                border-left: 40px solid transparent;
-                border-right: 40px solid transparent;
-                border-bottom: 70px solid green;
-            }
-            .layer:nth-child(2) {
-                border-bottom: 60px solid green;
                 border-left: 30px solid transparent;
                 border-right: 30px solid transparent;
+                border-bottom: 60px solid green;
             }
-            .layer:nth-child(3) {
-                border-bottom: 50px solid green;
+            .layer:nth-child(2) {
                 border-left: 25px solid transparent;
                 border-right: 25px solid transparent;
+                border-bottom: 50px solid green;
             }
-            .star {
-                top: -120px;
-                left: -10px;
-                width: 20px;
-                height: 20px;
+            .layer:nth-child(3) {
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-bottom: 40px solid green;
             }
+            .star { top: -100px; left: -6px; width: 15px; height: 15px; }
         }
     </style>
 </head>
 <body>
-    <!-- Merry Christmas Text -->
+    <!-- Greeting -->
     <div id="greeting">Merry Christmas</div>
 
     <!-- Tree -->
@@ -221,7 +172,7 @@
     </div>
 
     <script>
-        // Generate Falling Snowflakes
+        // Generate Snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
