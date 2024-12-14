@@ -105,40 +105,43 @@
             100% { transform: scale(1.2); opacity: 1; }
         }
 
-        /* Ornaments (Light Bulbs) */
-        .ornament {
+        /* Glowing Lights */
+        .light {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            z-index: 8; /* Ensure ornaments are above tree layers */
+            background: yellow;
+            box-shadow: 0 0 10px yellow, 0 0 20px yellow;
             animation: glow 1.5s infinite alternate; /* Add glow effect */
         }
 
-        /* Specific colors for light bulbs */
-        .ornament.red { background: red; }
-        .ornament.blue { background: blue; }
- .ornament.yellow { background: yellow; }
-        .ornament.green { background: green; }
-
         @keyframes glow {
-            0% { transform: scale(1); opacity: 0.8; }
+            0% { transform: scale(1); opacity : 0.8; }
             100% { transform: scale(1.5); opacity: 1; }
         }
 
-        /* Falling Snowflakes */
-        .snowflake {
+        /* String of Lights */
+        .light-string {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall 5s linear infinite;
-            z-index: 1; /* Ensure snowflakes are below other elements */
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Prevent interaction */
         }
 
-        @keyframes fall {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100vh); }
+        .light-string::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 2px;
+            height: 300px; /* Length of the string */
+            background: transparent;
+            transform: translateX(-50%);
+        }
+
+        .light-string .light {
+            animation: glow 1.5s infinite alternate;
         }
     </style>
 </head>
@@ -150,14 +153,14 @@
         <div class="layer"></div>
         <div class="trunk"></div>
         <div class="star"></div>
-        <div class="ornament red" style="top: 20px; left: 30px;"></div>
-        <div class="ornament blue" style="top: 50px; left: 70px;"></div>
-        <div class="ornament yellow" style="top: 80px; left: 40px;"></div>
-        <div class="ornament green" style="top: 30px; left: 60px;"></div>
-        <div class="ornament red" style="top: 60px; left: 10px;"></div>
-        <div class="ornament blue" style="top: 40px; left: 90px;"></div>
-        <div class="ornament yellow" style="top: 70px; left: 20px;"></div>
-        <div class="ornament green" style="top: 10px; left: 80px;"></div>
+        <div class="light-string">
+            <div class="light" style="top: 30px; left: 20%;"></div>
+            <div class="light" style="top: 60px; left: 40%;"></div>
+            <div class="light" style="top: 90px; left: 60%;"></div>
+            <div class="light" style="top: 120px; left: 30%;"></div>
+            <div class="light" style="top: 150px; left: 50%;"></div>
+            <div class="light" style="top: 180px; left: 70%;"></div>
+        </div>
     </div>
     <script>
         // Create snowflakes
