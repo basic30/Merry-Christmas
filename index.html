@@ -89,7 +89,7 @@
         /* Star */
         .star {
             position: absolute;
-            top: -30px; /* Adjusted to position the star at the top of the last triangle */
+            top: -30px; /* Position the star at the top of the tree */
             left: 50%;
             width: 30px;
             height: 30px;
@@ -115,6 +115,45 @@
             z-index: 8; /* Ensure ornaments are above tree layers */
         }
 
+        /* Light Bulbs */
+            .light-bulb {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            z-index: 8; /* Ensure light bulbs are above tree layers */
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .light-bulb:nth-child(1) {
+            background: yellow;
+            top: 20px;
+            left: 40px;
+        }
+
+        .light-bulb:nth-child(2) {
+            background: red;
+            top: 50px;
+            left: 30px;
+        }
+
+        .light-bulb:nth-child(3) {
+            background: blue;
+            top: 40px;
+            left: 60px;
+        }
+
+        .light-bulb:nth-child(4) {
+            background: green;
+            top: 70px;
+            left: 50px;
+        }
+
+        @keyframes glow {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
         /* Falling Snowflakes */
         .snowflake {
             position: absolute;
@@ -138,7 +177,11 @@
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="trunk"></div>
-        <div class="star" style="top: -30px;"></div>
+        <div class="star"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
+        <div class="light-bulb"></div>
         <div class="ornament" style="top: 20px; left: 30px;"></div>
         <div class="ornament" style="top: 50px; left: 50px;"></div>
         <div class="ornament" style="top: 80px; left: 70px;"></div>
