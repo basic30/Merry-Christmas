@@ -27,6 +27,7 @@
             text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ffff00;
             margin-bottom: 20px;
             animation: glow 2s infinite alternate;
+            z-index: 10; /* Ensure text is on top */
         }
 
         @keyframes glow {
@@ -37,6 +38,7 @@
         /* Tree Container */
         #tree {
             position: relative;
+            z-index: 5; /* Ensure tree is below text but above background */
         }
 
         /* Tree Layers */
@@ -76,6 +78,7 @@
             height: 60px;
             background: brown;
             transform: translateX(-50%);
+            z-index: 6; /* Ensure trunk is above tree layers */
         }
 
         /* Star */
@@ -89,6 +92,7 @@
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             transform: translateX(-50%);
             animation: twinkle 2s infinite alternate;
+            z-index: 7; /* Ensure star is above tree */
         }
 
         @keyframes twinkle {
@@ -103,19 +107,48 @@
             height: 10px;
             background: red;
             border-radius: 50%;
+            z-index: 8; /* Ensure ornaments are above tree layers */
         }
 
-        /* Falling Snowflakes */
-        .snowflake {
+         Falling Snow.snowflake {
             position: absolute;
-            top: -10px;
-            width: 8px;
-            height: 8px;
             background: white;
             border-radius: 50%;
-            animation: fall linear infinite;
             opacity: 0.8;
+            animation: fall 5s linear infinite;
+            z-index: 1; /* Ensure snowflakes are below other elements */
         }
 
         @keyframes fall {
-            0% { transform: translateY(
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div id="greeting">Merry Christmas!</div>
+    <div id="tree">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="trunk"></div>
+        <div class="star"></div>
+        <div class="ornament" style="top: 20px; left: 30px;"></div>
+        <div class="ornament" style="top: 50px; left: 50px;"></div>
+        <div class="ornament" style="top: 80px; left: 70px;"></div>
+    </div>
+    <script>
+        // Create snowflakes
+        for (let i = 0; i < 100; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            const size = Math.random() * 10 + 5; // Random size between 5 and 15
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random fall duration
+            document.body.appendChild(snowflake);
+        }
+    </script>
+</body>
+</html>
