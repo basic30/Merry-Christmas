@@ -25,9 +25,11 @@
             font-weight: bold;
             color: #fff;
             text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ffff00;
-            margin-bottom: 20px;
+            margin-top: 20px; /* Space from the top */
             animation: glow 2s infinite alternate;
             z-index: 10; /* Ensure text is on top */
+            position: absolute; /* Position it at the top */
+            top: 20px; /* Adjust as needed */
         }
 
         @keyframes glow {
@@ -39,7 +41,7 @@
         #tree {
             position: relative;
             z-index: 5; /* Ensure tree is below text but above background */
-            margin-top: 20px; /* Add some space above the tree */
+            margin-top: 100px; /* Add some space above the tree */
         }
 
         /* Tree Layers */
@@ -123,7 +125,7 @@
             z-index: 1; /* Ensure snowflakes are below other elements */
         }
 
-        @ keyframes fall {
+        @keyframes fall {
             0% { transform: translateY(0); }
             100% { transform: translateY(100vh); }
         }
